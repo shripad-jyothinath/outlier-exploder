@@ -96,6 +96,10 @@ Outputs:
 
 ## 📊 Key Results
 
+<p align="center">
+  <img src="results/bfa_comparative_curves.png" alt="Comparative BFA Degradation Curves" width="95%" />
+</p>
+
 | Injected Bit Flips | Targeted Exponent (PBS) | Targeted Mantissa (PBS) | Random Hardware Faults |
 | :---: | :---: | :---: | :---: |
 | **0 (Clean Baseline)** | **100.0%** | **100.0%** | **100.0%** |
