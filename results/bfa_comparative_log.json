@@ -1,0 +1,158 @@
+{
+  "exponent": [
+    {
+      "flip": 0,
+      "mode": "exponent",
+      "layer": "Clean",
+      "bit": "-",
+      "accuracy": 100.0,
+      "loss": 1.810616135597229,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 1.0
+    },
+    {
+      "flip": 1,
+      "mode": "exponent",
+      "layer": "fc",
+      "bit": 30,
+      "accuracy": 0.0,
+      "loss": 1000000.0,
+      "max_activation": 9.970587143998957e+37,
+      "winner_ratio": 0.875
+    },
+    {
+      "flip": 2,
+      "mode": "exponent",
+      "layer": "layer4.1.conv2",
+      "bit": 30,
+      "accuracy": 0.0,
+      "loss": 1000000.0,
+      "max_activation": 1e+38,
+      "winner_ratio": 1.0
+    }
+  ],
+  "mantissa": [
+    {
+      "flip": 0,
+      "mode": "mantissa",
+      "layer": "Clean",
+      "bit": "-",
+      "accuracy": 100.0,
+      "loss": 1.810616135597229,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 1.0
+    },
+    {
+      "flip": 1,
+      "mode": "mantissa",
+      "layer": "fc",
+      "bit": 22,
+      "accuracy": 93.75,
+      "loss": 2.2272385358810425,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 0.9375
+    },
+    {
+      "flip": 2,
+      "mode": "mantissa",
+      "layer": "fc",
+      "bit": 21,
+      "accuracy": 87.5,
+      "loss": 2.445115566253662,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 0.875
+    },
+    {
+      "flip": 3,
+      "mode": "mantissa",
+      "layer": "fc",
+      "bit": 22,
+      "accuracy": 75.0,
+      "loss": 2.595306873321533,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 0.75
+    },
+    {
+      "flip": 4,
+      "mode": "mantissa",
+      "layer": "fc",
+      "bit": 22,
+      "accuracy": 62.5,
+      "loss": 2.7133095264434814,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 0.625
+    },
+    {
+      "flip": 5,
+      "mode": "mantissa",
+      "layer": "fc",
+      "bit": 20,
+      "accuracy": 51.5625,
+      "loss": 2.8266390562057495,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 0.515625
+    }
+  ],
+  "random": [
+    {
+      "flip": 0,
+      "mode": "random",
+      "layer": "Clean",
+      "bit": "-",
+      "accuracy": 100.0,
+      "loss": 1.810616135597229,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 1.0
+    },
+    {
+      "flip": 1,
+      "mode": "random",
+      "layer": "fc",
+      "bit": 6,
+      "accuracy": 100.0,
+      "loss": 1.810616135597229,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 1.0
+    },
+    {
+      "flip": 2,
+      "mode": "random",
+      "layer": "fc",
+      "bit": 23,
+      "accuracy": 100.0,
+      "loss": 1.81061452627182,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 1.0
+    },
+    {
+      "flip": 3,
+      "mode": "random",
+      "layer": "fc",
+      "bit": 21,
+      "accuracy": 100.0,
+      "loss": 1.81061452627182,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 1.0
+    },
+    {
+      "flip": 4,
+      "mode": "random",
+      "layer": "layer4.1.conv2",
+      "bit": 2,
+      "accuracy": 100.0,
+      "loss": 1.81061452627182,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 1.0
+    },
+    {
+      "flip": 5,
+      "mode": "random",
+      "layer": "fc",
+      "bit": 8,
+      "accuracy": 100.0,
+      "loss": 1.81061452627182,
+      "max_activation": 13.694098472595215,
+      "winner_ratio": 1.0
+    }
+  ]
+}

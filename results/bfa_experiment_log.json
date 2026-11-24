@@ -1,0 +1,30 @@
+[
+  {
+    "flip": 0,
+    "layer": "N/A (Clean)",
+    "bit": "-",
+    "segment": "Clean",
+    "w_orig": 0.0,
+    "w_flip": 0.0,
+    "delta_w": 0.0,
+    "accuracy": 0.0,
+    "loss": 8.698152542114258,
+    "max_activation": 13.64980697631836,
+    "entropy": 5.0663933753967285,
+    "winner_ratio": 1.0
+  },
+  {
+    "flip": 1,
+    "layer": "fc",
+    "bit": 30,
+    "segment": "Exponent Bit [30] (exp bit 7)",
+    "w_orig": 0.47536659240722656,
+    "w_flip": 1.6175886921947207e+38,
+    "delta_w": 1.6175886921947207e+38,
+    "accuracy": 0.0,
+    "loss": NaN,
+    "max_activation": Infinity,
+    "entropy": NaN,
+    "winner_ratio": 1.0
+  }
+]
