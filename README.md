@@ -61,6 +61,58 @@ The framework tests three distinct fault injection regimes:
 2. **Targeted Mantissa Attacks (PBS):** Searches mantissa bits [15..22]. Demonstrates smooth, progressive degradation of decision boundaries without numerical overflow.
 3. **Random Hardware Faults (Baseline Noise):** Simulates random cosmic ray or thermal bit flips across the network. Demonstrates that neural networks naturally tolerate random bit noise, proving that **threat models must evaluate worst-case targeted fault search**.
 
+## 🛡️ Software Mitigation: Outlier Quarantine Defense (OQD)
+
+A central open question in ML hardware security is: **Can we defend neural networks against Rowhammer without expensive hardware ECC memory?**
+
+We designed and evaluated the **Outlier Quarantine Defense (OQD)**, based on a key architectural insight:
+> *Deep neural networks are inherently resilient to missing parameters (pruning), but catastrophically fragile to exploding parameters (the Outlier Amplifier Mechanism).*
+
+<p align="center">
+  <img src="results/defense_comparison_curves.png" alt="OQD Defense Comparison Curves" width="95%" />
+</p>
+
+### Defense Mechanism:
+1. Precomputes layer-wise statistical thresholds: $\tau = 5 \cdot \sigma_{\text{clean}}$.
+2. Performs periodic or post-inference tensor sanitization: any weight with $|w| > \tau$ (e.g., $10^{37}$) is flagged as a hardware fault and **quarantined (zeroed out)**.
+3. Because deep networks have abundant redundancy, zeroing out the corrupted parameter costs $0.0\%$ accuracy, completely defusing the Rowhammer attack!
+
+| Targeted Bit Flips | Undefended Accuracy | OQD Defended Accuracy | Undefended Max Activation | Defended Max Activation |
+| :---: | :---: | :---: | :---: | :---: |
+| **0 (Clean)** | **100.0%** | **100.0%** | $14.0$ | $13.7$ |
+| **1 Flip** | **0.0% (Total Collapse)** | **100.0% (Survives)** | $10^{38}$ | **$12.4$ (Suppressed)** |
+| **2 Flips** | 0.0% | **100.0%** | $10^{38}$ | **$12.4$** |
+| **3 Flips** | 0.0% | **100.0%** | $10^{38}$ | **$12.4$** |
+| **4 Flips** | 0.0% | **100.0%** | $10^{38}$ | **$12.4$** |
+| **5 Flips** | 0.0% | **100.0%** | $10^{38}$ | **$12.4$** |
+
+---
+
+## 🔍 Interactive Bit-Flip Inspector CLI
+
+Inspect individual weight bit flips in real-time in your terminal:
+```bash
+python3 visualize_neuron.py --weight 0.04754 --bit 30
+```
+
+Sample Terminal Output:
+```text
+===========================================================================
+ IEEE 754 BIT-FLIP INSPECTOR: Bit 30 (EXPONENT BIT: 2^7 scale multiplier)
+===========================================================================
+Original:  0 | 01111010 | 10000101011100101001110  ==>  +4.754000e-02
+Corrupted: 0 | 11111010 | 10000101011100101001110  ==>  +1.617702e+37
+               ^ (Flipped)
+
+[Field Decodings]
+  Exponent : 122 (bias -127:   -5)  ==>  250 (bias -127: +123)
+  Weight Δ : +1.617702e+37
+[Neuron Dot-Product Impact Simulation (x = 1.0)]
+  Corrupted Neuron Output : +1.6177e+37
+  [!] EXPLOSIVE ACTIVATION: Forces Winner-Group collapse!
+===========================================================================
+```
+
 ---
 
 ## 🚀 Quick Start
